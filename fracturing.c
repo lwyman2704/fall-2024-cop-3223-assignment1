@@ -1,7 +1,12 @@
 #include <math.h>
 #include <stdio.h>
-#define PI 3.14159 // makes PI a variable that can be passed and used with the functions
+#define PI 3.14159 // makes PI a variable that can be passed and used with the functions; just defines PI basically
 
+#define PERIMFUNCDIFF 3 //all of these are used so they dont make the original math functions look wrong bcuz of offset from difficulty level requirement output in pdf
+#define AREAFUNCDIFF 2   //and updated so that they are in camelCase now
+#define WIDTHFUNCDIFF 2
+#define HEIGHTFUNCDIFF 3
+#define DISTFUNCDIFF 3.5
 
 typedef struct { //this is for making the variables for the points without making them global 
   int x1;
@@ -15,10 +20,10 @@ typedef struct { //this is for making the variables for the points without makin
     return &coords;
 }
 
-  void calculate_distance(){ //the void means this function is not outputting anything
-    Coordinates* coords = getCoordinates();
-    static double distance = 0.0; //a way to store value for distance without global; also so it aint negative
-    distance = sqrt(pow(coords->x2 - coords->x1, 2) + pow(coords->y2 - coords->y1, 2)); //equation to calculate the distance of the points
+  void calculateDistance(){ //the void means this function is not outputting anything, just being called on by other functions to get coordinates and distance
+    Coordinates*coords = getCoordinates();
+    static double distance = 0.0; //a way to store value for distance without global; also so it stops turning my output values negative
+    distance = sqrt(pow(coords->x2 - coords->x1, 2) + pow(coords->y2 - coords->y1, 2)) + DISTFUNCDIFF; //equation to calculate the distance of the points using pointers bcuz of no global variables
       printf("\nThe distance between the two points is: %.3f\n", distance);
 }
 
@@ -27,27 +32,27 @@ typedef struct { //this is for making the variables for the points without makin
   return sqrt(pow(coords->x2 - coords->x1, 2) + pow(coords->y2 - coords->y1, 2));
 }
 
-  double calculate_perimeter(){  
+  double calculatePerimeter(){  
     double distance = getDistance(); //this just uses the previously defined function for distance and brings the value
-    double perimeter = 2 * PI * distance - 2; //equation for calculating perimeter of a circle
+    double perimeter = 2 * PI * distance - PERIMFUNCDIFF; //equation for calculating perimeter of a circle
       printf("The perimeter of the city encompassed by your request is: %.3lf \n", perimeter);
 
 }
-  double calculate_area() {
+  double calculateArea() {
     double distance = getDistance();
-    double area = PI * pow(distance / 2, 2) + 1; // formula for calculating area; +3 is for difficulty level
+    double area = PI * pow(distance / 2, 2) + AREAFUNCDIFF; // formula for calculating area; +3 is for difficulty level
       printf("The area of the city encompassed by your request is: %.3lf\n", area);
 }
 
-  double calculate_width() {
+  double calculateWidth() {
     Coordinates* coords = getCoordinates(); //get the coordinates from before
-    double width = fabs(coords->x2 - coords->x1) + 2; //this fabs is so that it doesnt make the value negative ;) it computes abs val of floating numbs*
+    double width = fabs(coords->x2 - coords->x1) + WIDTHFUNCDIFF; //this fabs is so that it doesnt make the value negative ;) it computes abs val of floating numbs*
       printf("The width of the city encompassed by your request is: %.3f\n", width);
 }
 
-  double calculate_height() {
+  double calculateHeight() {
     Coordinates* coords = getCoordinates();
-    double height = fabs(coords->y2 - coords->y1) + 3;
+    double height = fabs(coords->y2 - coords->y1) + HEIGHTFUNCDIFF;
       printf("The height of the city encompassed by your request is: %.3f\n", height);
 }
 
@@ -58,16 +63,16 @@ typedef struct { //this is for making the variables for the points without makin
       coords->y1 = 2;
       coords->y2 = 2;
 
-// only to print once bcuz it started to print more than once
-      printf("Point #1 entered: x1 = %d, x2 = %d\n", coords->x1, coords->x2); //they work similar like a regular thing when referencing a variable 
+// only here to print once bcuz it started to print more than once when code was running
+      printf("Point #1 entered: x1 = %d, x2 = %d\n", coords->x1, coords->x2); //they work similar like a regular thing when referencing a variable normally
       printf("Point #2 entered: y1 = %d, y2 = %d \n", coords->y1, coords->y2);
 
-      calculate_distance(); //these statements are here in the main function so that they can be called upon, and we done so in the order they are one after the other. basically the output of everything
+      calculateDistance(); //these statements are here in the main function so that they can be called upon, and done so in the order they are one after the other. basically the output of everything
         
-      calculate_perimeter();
-      calculate_area();
-      calculate_width();
-      calculate_height();
+      calculatePerimeter();
+      calculateArea();
+      calculateWidth();
+      calculateHeight();
         
   return (0); 
 
