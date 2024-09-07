@@ -67,8 +67,7 @@ typedef struct { //this is for making the variables for the points without makin
       printf("Point #1 entered: x1 = %d, x2 = %d\n", coords->x1, coords->x2); //they work similar like a regular thing when referencing a variable normally
       printf("Point #2 entered: y1 = %d, y2 = %d \n", coords->y1, coords->y2);
 
-      calculateDistance(); //these statements are here in the main function so that they can be called upon, and done so in the order they are one after the other. basically the output of everything
-        
+      calculateDistance(); //these statements are here in the main function so that they can be called upon, and done so in the order they are one after the other. basically the output of everything  
       calculatePerimeter();
       calculateArea();
       calculateWidth();
