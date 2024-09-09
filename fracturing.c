@@ -52,7 +52,7 @@ typedef struct {
   void calculateDistance(){   
 
     Coordinates*coords = getCoordinates();
-    static double distance = 0.0;    
+       double distance = 0.0;    
 
     distance = sqrt(pow(coords->x2 - coords->x1, 2) + pow(coords->y2 - coords->y1, 2));    
       printf("\nThe distance between the two points is: %.3f\n", distance);
@@ -167,10 +167,14 @@ typedef struct {
 
     Coordinates* coords = getCoordinates();
      
-      printf("Please enter the 'x' values of the coordinates: ");
-      scanf("%d" "%d", &coords->x1, &coords->x2); 
-      printf("Please enter the 'y' values of the coordinates: ");
-      scanf("%d" "%d", &coords->y1, &coords->y2);
+      printf("Please enter the 'X' value of the first coordinate: ");
+      scanf("%d", &coords->x1); 
+      printf("Please enter the 'X' value of the second coordinate: ");
+      scanf("%d", &coords->x2); 
+      printf("Please enter the 'Y' value of the first coordinate: ");
+      scanf("%d", &coords->y1);
+      printf("Please enter the 'Y' value of the second coordinate: ");
+      scanf("%d", &coords->y2);
       
 // Only here to print once because it started to print more than once when code was running.
 // They work similar like a regular thing when referencing a variable normally
