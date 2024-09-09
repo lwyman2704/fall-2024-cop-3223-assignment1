@@ -1,6 +1,7 @@
 //********************************************************
 // fracturing.c
 // Author: Lorenzo Wyman
+// UCF ID: 5464079
 // Class: COP 3223, Professor Parra
 // Date: 9/8/2024
 // Purpose: This program prints the requests of the user (area, distance, heigfht, width, perimeter) using the coordinates or points provided by the user. 
@@ -45,7 +46,6 @@ typedef struct {
 // Postcondition:   none.
 //********************************************************
 
-// The void means this function is not outputting anything, just being called on by other functions to get coordinates and distance.
 // Static is a way to store value for distance without global; also to prevent my values from becoming negative, I have a set stattic value for it to start from (0.0).
 // The equation to calculate the distance of the points uses pointers bcuz of no global variables
 
@@ -62,7 +62,7 @@ typedef struct {
 //********************************************************
 // double getDistance()
 //
-// Purpose:         Helper function that retreives user given coordinates and returns the value of the distance so the perimeter and area function can fucntion correctly.
+// Purpose:         Helper function that retreives user given coordinates and returns the value of the distance so the perimeter and area function can funtion correctly.
 // Output:          None.
 // Precondition:    none.
 // Postcondition:   none.
